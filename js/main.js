@@ -15,9 +15,12 @@ function Book(title, author, year, pages, read){
     this.id = Math.floor(Math.random() * 100000000);
 }
 
-function addBookToLibrary(title, author, year, pages, read){    
-    myLibrary.push(new Book(title, author, year, pages, read));
-    saveRenderBooks();
+function addBookToLibrary(title, author, year, pages, read){  
+     
+        myLibrary.push(new Book(title, author, year, pages, read));
+       
+        saveRenderBooks();          
+  
 }
 
 function fillOutEditForm(book){
@@ -82,7 +85,7 @@ add.addEventListener('click', () => {
 });
 
 function addLocalStorage(){    
-    myLibrary = JSON.parse(localStorage.getItem("library")) // [];
+    myLibrary = JSON.parse(localStorage.getItem("library")) || [];
     saveRenderBooks();
 }
 
@@ -159,9 +162,12 @@ function createBookItem(book, index){
 
 function renderBooks(){
     books.textContent = "";
-    myLibrary.map((book, index) => {
-        createBookItem(book, index)
-    });    
+    
+        myLibrary.map((book, index) => {
+            createBookItem(book, index)
+        });  
+
+     
 }
 
 function saveRenderBooks(){    
